@@ -1,11 +1,11 @@
-import { Calendar, dayjsLocalizer } from "react-big-calendar";
+import { Calendar, Views, dayjsLocalizer } from "react-big-calendar";
 import dayjs from "dayjs";
 import { useState, useEffect, useMemo } from "react";
 import { API_URL_GETTRAIN } from "../constants";
 
 import 'react-big-calendar/lib/css/react-big-calendar.css'
 
-export default function TrainingCalendar(props) {
+function TrainingCalendar(props) {
 
     const localizer = dayjsLocalizer(dayjs);
 
@@ -54,8 +54,11 @@ export default function TrainingCalendar(props) {
                 endAccessor="end"
                 events={events}
                 views={['month', 'day', 'week']}
+                defaultView={Views.WEEK}
                 style={{ height: 500 }}
             />
         </div>
     );
 }
+
+export default TrainingCalendar;

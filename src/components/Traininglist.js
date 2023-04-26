@@ -76,7 +76,7 @@ function Traininglist() {
         <AddTraining addTraining={addTraining} />
         <div 
         className="ag-theme-alpine" 
-        style={{height: 500, width: "100%", margin: "auto"}}>
+        style={{height: 500, width: "65%", margin: "auto"}}>
             <AgGridReact 
                 rowData={trainings}
                 columnDefs={columnDefs}

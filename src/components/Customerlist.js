@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { API_URL_CUST } from "../constants";
 import { AgGridReact } from "ag-grid-react";
 import { Button } from "@mui/material";
-import { CSVLink } from "react-csv";
 import EditCustomer from "./EditCustomer";
 import AddCustomer from "./AddCustomer";
 
@@ -13,6 +12,7 @@ function Customerlist() {
 
     const [customers, setCustomers] = useState([]);
     const [open, setOpen] = useState(false);
+    const gridRef = useRef();
 
     const [columnDefs] = useState([
         {field: 'firstname', headerName: 'First name', sortable: true, filter: true, width: 150},
@@ -89,16 +89,25 @@ function Customerlist() {
         })
     };
 
+    const btnExport = useCallback(() => {
+        gridRef.current.api.exportDataAsCsv(getParams);
+    }, []);
+
+    const getParams = {
+        columnKeys: ['firstname', 'lastname', 'streetaddress', 'postcode', 'city', 'email', 'phone']
+    };
+
     return(
         <>
         <AddCustomer addCustomer={addCustomer} />
-        <CSVLink data={customers}>Download Customer Data in CSV</CSVLink>
+        <Button size="small" onClick={btnExport}>Export to CSV</Button>
         <div 
         className="ag-theme-alpine" 
         style={{height: 600, width: "100%", margin: "auto"}}>
             <AgGridReact 
                 rowData={customers}
                 columnDefs={columnDefs}
+                ref={gridRef}
             />
         </div>
         </>
