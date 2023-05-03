@@ -1,5 +1,5 @@
-import { Button, Dialog, DialogActions, DialogContent, DialogTitle, TextField } from "@mui/material";
-import { useState } from "react";
+import { Button, Dialog, DialogActions, DialogContent, DialogTitle, TextField } from '@mui/material';
+import { useState } from 'react';
 
 export default function EditCustomer(props) {
 
@@ -41,7 +41,7 @@ export default function EditCustomer(props) {
 
     return(
         <div>
-            <Button size="small" onClick={handleClickOpen}>
+            <Button size='small' onClick={handleClickOpen}>
                 Edit
             </Button>
 
@@ -50,60 +50,60 @@ export default function EditCustomer(props) {
 
                 <DialogContent>
                     <TextField
-                        margin="dense"
+                        margin='dense'
                         label="First name"
                         value={customer.firstname}
                         onChange={(e) => setCustomer({...customer, firstname: e.target.value})}
                         fullWidth
-                        variant="standard" 
+                        variant='standard' 
                     />
                     <TextField
-                        margin="dense"
-                        label="Last name"
+                        margin='dense'
+                        label='Last name'
                         value={customer.lastname}
                         onChange={(e) => setCustomer({...customer, lastname: e.target.value})}
                         fullWidth
-                        variant="standard" 
+                        variant='standard' 
                     />
                     <TextField
-                        margin="dense"
-                        label="E-mail"
+                        margin='dense'
+                        label='E-mail'
                         value={customer.email}
                         onChange={(e) => setCustomer({...customer, email: e.target.value})}
                         fullWidth
-                        variant="standard" 
+                        variant='standard' 
                     />
                     <TextField
-                        margin="dense"
-                        label="Phone number"
+                        margin='dense'
+                        label='Phone number'
                         value={customer.phone}
                         onChange={(e) => setCustomer({...customer, phone: e.target.value})}
                         fullWidth
-                        variant="standard" 
+                        variant='standard' 
                     />
                     <TextField
-                        margin="dense"
-                        label="Street address"
+                        margin='dense'
+                        label='Street address'
                         value={customer.streetaddress}
                         onChange={(e) => setCustomer({...customer, streetaddress: e.target.value})}
                         fullWidth
-                        variant="standard" 
+                        variant='standard' 
                     />
                     <TextField
-                        margin="dense"
-                        label="Post code"
+                        margin='dense'
+                        label='Post code'
                         value={customer.postcode}
                         onChange={(e) => setCustomer({...customer, postcode: e.target.value})}
                         fullWidth
-                        variant="standard" 
+                        variant='standard' 
                     />
                     <TextField
-                        margin="dense"
-                        label="City"
+                        margin='dense'
+                        label='City'
                         value={customer.city}
                         onChange={(e) => setCustomer({...customer, city: e.target.value})}
                         fullWidth
-                        variant="standard" 
+                        variant='standard' 
                     />
                 </DialogContent>
 

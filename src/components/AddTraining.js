@@ -1,10 +1,10 @@
-import { useState, useEffect } from "react";
-import { Button, Dialog, DialogActions, DialogContent, DialogTitle, TextField, SelectChangeEvent, InputLabel, Select, MenuItem } from "@mui/material";
+import { useState, useEffect } from 'react';
+import { Button, Dialog, DialogActions, DialogContent, DialogTitle, TextField } from '@mui/material';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
-import { API_URL_CUST } from "../constants";
+import { API_URL_CUST } from '../constants';
 
 export default function AddTraining(props) {
 
@@ -58,46 +58,46 @@ export default function AddTraining(props) {
                     <LocalizationProvider dateAdapter={AdapterDayjs}>
                      <DemoContainer components={['DateTimePicker']}>
                         <DateTimePicker
-                            margin="dense"
-                            label="Date and Time"
+                            margin='dense'
+                            label='Date and Time'
                             value={training.date}
-                            format="DD.MM.YYYY HH:mm"
+                            format='DD.MM.YYYY HH:mm'
                             onChange={(datetimeValue) => {
                                 setTraining({...training, date: datetimeValue});
                             }}
                             fullWidth
-                            variant="standard"
+                            variant='standard'
                         />
                      </DemoContainer>
                     </LocalizationProvider>
                     
                     <TextField
-                        margin="dense"
-                        label="Activity"
+                        margin='dense'
+                        label='Activity'
                         value={training.activity}
                         onChange={(e) => setTraining({...training, activity: e.target.value})}
                         fullWidth
-                        variant="standard"
+                        variant='standard'
                     />
                     <TextField
-                        margin="dense"
-                        label="Duration"
+                        margin='dense'
+                        label='Duration'
                         value={training.duration}
                         onChange={(e) => setTraining({...training, duration: e.target.value})}
                         fullWidth
-                        variant="standard"
+                        variant='standard'
                     />
                     <TextField
                         select
-                        margin="dense"
-                        label="Customer"
+                        margin='dense'
+                        label='Customer'
                         defaultValue={training.customer}
                         SelectProps={{
                             native: true,
                             }}
                             onChange={(e) => setTraining({...training, customer: e.target.value})}
                         fullWidth
-                        variant="standard"
+                        variant='standard'
                     >
                         {customers.map((data) => (
                             <option key={data.links[0].href} value={data.links[0].href}>

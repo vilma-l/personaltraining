@@ -1,9 +1,10 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
-import { API_URL_CUST } from "../constants";
-import { AgGridReact } from "ag-grid-react";
-import { Button } from "@mui/material";
-import EditCustomer from "./EditCustomer";
-import AddCustomer from "./AddCustomer";
+import React, { useState, useEffect, useRef, useCallback } from 'react';
+import { API_URL_CUST } from '../constants';
+import { AgGridReact } from 'ag-grid-react';
+import { Button } from '@mui/material';
+import Snackbar from '@mui/material/Snackbar';
+import EditCustomer from './EditCustomer';
+import AddCustomer from './AddCustomer';
 
 import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-alpine.css';
@@ -13,6 +14,7 @@ function Customerlist() {
     const [customers, setCustomers] = useState([]);
     const [open, setOpen] = useState(false);
     const gridRef = useRef();
+    const [msg, setMsg] = useState('');
 
     const [columnDefs] = useState([
         {field: 'firstname', headerName: 'First name', sortable: true, filter: true, width: 150},
@@ -26,7 +28,7 @@ function Customerlist() {
             params={params.data} />,
             width: 120},
         {cellRenderer: params => 
-            <Button size="small" color="error" onClick={() => deleteCustomer(params)}>
+            <Button size='small' color='error' onClick={() => deleteCustomer(params)}>
                 Delete
                 </Button>,
                 width: 120}
@@ -59,15 +61,16 @@ function Customerlist() {
     };
 
     const deleteCustomer = (params) => {
-        if (window.confirm("Are you sure you want to delete this customer?")) {
+        if (window.confirm('Are you sure you want to delete this customer?')) {
             fetch(params.data.links[1].href, {method: 'DELETE'})
             .then(response => {
                 if (response.ok) {
+                    setMsg('Customer deleted successfully')
                     setOpen(true)
                     getCustomers();
                 }
                 else
-                    alert("Something went wrong with deleting a customer: " + response.statusText);
+                    alert('Something went wrong with deleting a customer: ' + response.statusText);
             })
             .catch(err => console.error(err));
         }
@@ -81,11 +84,12 @@ function Customerlist() {
         })
         .then(response => {
             if (response.ok) {
+                setMsg('Customer edited successfully')
                 setOpen(true)
                 getCustomers();
             }
             else
-                alert("Something went wrong with editing a customer: " + response.statusText);
+                alert('Something went wrong with editing a customer: ' + response.statusText);
         })
     };
 
@@ -100,16 +104,24 @@ function Customerlist() {
     return(
         <>
         <AddCustomer addCustomer={addCustomer} />
-        <Button size="small" onClick={btnExport}>Export to CSV</Button>
+        <Button size='small' color='secondary' onClick={btnExport}>Export to CSV</Button>
         <div 
-        className="ag-theme-alpine" 
-        style={{height: 600, width: "100%", margin: "auto"}}>
+        className='ag-theme-alpine' 
+        style={{height: 550, width: '100%', margin: 'auto'}}>
             <AgGridReact 
                 rowData={customers}
                 columnDefs={columnDefs}
                 ref={gridRef}
+                pagination={true}
+                paginationPageSize={10}
             />
         </div>
+        <Snackbar
+            open={open}
+            autoHideDuration={4000}
+            onClose={() => setOpen(false)}
+            message={msg}
+        />
         </>
     );
 }
