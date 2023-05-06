@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/front-lopputyo/static/css/main.1212bc48.css",
+    "main.js": "/front-lopputyo/static/js/main.26b3298b.js",
+    "static/js/787.9b1558b2.chunk.js": "/front-lopputyo/static/js/787.9b1558b2.chunk.js",
+    "index.html": "/front-lopputyo/index.html",
+    "main.1212bc48.css.map": "/front-lopputyo/static/css/main.1212bc48.css.map",
+    "main.26b3298b.js.map": "/front-lopputyo/static/js/main.26b3298b.js.map",
+    "787.9b1558b2.chunk.js.map": "/front-lopputyo/static/js/787.9b1558b2.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1212bc48.css",
+    "static/js/main.26b3298b.js"
+  ]
+}
