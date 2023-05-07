@@ -27,12 +27,10 @@ function Menu() {
                 <Tab value='customers' label='Customers' />
                 <Tab value='trainings' label='Trainings' />
                 <Tab value='trainingcalendar' label='Training Calendar' />
-                <Tab value='stats' label='Training Stats' />
             </Tabs>
             {value === 'customers' && <Customerlist />}
             {value === 'trainings' && <Traininglist />}
             {value === 'trainingcalendar' && <TrainingCalendar />}
-            {value === 'stats' && <Stats />}
         </Box>
     );
 }
